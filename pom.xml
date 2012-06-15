@@ -34,9 +34,9 @@
 
   <repositories>
     <repository>
-      <id>cerner-release-external</id>
-      <name>Cerner External Repository</name>
-      <url>http://repo.release.cerner.corp/external/repo/</url>
+      <id>maven-repo</id>
+      <name>Maven Repository</name>
+      <url>http://repo.maven.apache.org/maven2</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
