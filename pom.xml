@@ -29,17 +29,62 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <projectNameTemplate>[artifactId]-[version]</projectNameTemplate>
+          <downloadSources>true</downloadSources>
+          <classpathContainers>
+            <classpathContainer>
+              org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5
+              </classpathContainer>
+          </classpathContainers>
+          <additionalConfig>
+            <file>
+                  <!-- Configures the Eclipse project to use UTF-8 encoding -->
+              <name>.settings/org.eclipse.core.resources.prefs</name>
+              <content>
+                      <![CDATA[eclipse.preferences.version=1${line.separator}encoding/<project>=UTF-8${line.separator}]]>
+              </content>
+            </file>
+            <file>
+                  <!-- Configures the FindBugs Eclipse Plugin -->
+              <name>.fbprefs</name>
+              <content>
+                      <![CDATA[detector_threshold=3${line.separator}effort=max${line.separator}excludefilter0=src/etc/findbugs-exclude.xml${line.separator}filter_settings=Low|STYLE,MALICIOUS_CODE,BAD_PRACTICE,CORRECTNESS,I18N,PERFORMANCE,MT_CORRECTNESS|false${line.separator}filter_settings_neg=|${line.separator}]]>
+              </content>
+            </file>
+          </additionalConfig>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
   <repositories>
     <repository>
-      <id>cerner-release-external</id>
-      <name>Cerner External Repository</name>
-      <url>http://repo.release.cerner.corp/external/repo/</url>
+      <id>Apache Repo</id>
+      <name>Apache Repo</name>
+      <url>http://repo.maven.apache.org/maven2</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
     </repository>
   </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>Maven Plugin Repository</name>
+      <url>http://repo1.maven.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
